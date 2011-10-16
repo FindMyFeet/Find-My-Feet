@@ -63,8 +63,14 @@ class GeoController {
 		$this->long = $point["long"];
 	
 		$this->data["point"] = $point; //If the page is ever requested as JSON, the controller runs encode_json($this->data) and echos it.
+		
+		$this->jscripts[] = "static/js/thing.js"; //this adds a javascript file to the list of files which will be linked in the <head>
 	}
 }
 ```
 
 After the init() functions are run, the specified template file is loaded and rendered.
+
+#### note ####
+I may have invested a small ammount of time in this readme but that doesn't mean I've decided (yet) if I want to invest the rest of my week.
+Canoe club takes precedence (if I can book a bloody session this week - they get booked up *fast*...) 
