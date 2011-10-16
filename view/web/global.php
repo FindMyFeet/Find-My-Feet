@@ -10,7 +10,7 @@
 	header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
 	
 ?>
-<html <?= ((isset($this->manifest) && ($this->manifest)) ? "manifset = \"{$this->manifest}\"" : ""); ?>>
+<html <?= ((isset($this->manifest) && ($this->manifest)) ? "manifest=\"{$this->manifest}\"" : ""); ?>>
     <head>
         <title><?php echo $this->title; ?> - Find My Feet</title>
         
