@@ -41,7 +41,10 @@ CACHE MANIFSET
 	}
 	
 	foreach ($files as $file) {
-		echo "http://linuxproj/~jat1g11/".$file."\n";
+		if(substr($file, 0, 4) != 'http')
+			echo "http://linuxproj/~jat1g11/".$file."\n";
+		else
+			echo $file."\n";
 	}
 	
 ?>
