@@ -48,7 +48,7 @@ How does the 'framework' work?
 
 Use these methods in the controller to pass data from the model to the view. Here is an example:
 
-```php
+```PHP
 class GeoController {
 	public $template = 'geo'; //Tells the controller to loog in view/web/geo.php for the template
 	public $title = 'Lookup location';
