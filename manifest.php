@@ -81,7 +81,7 @@ CACHE MANIFEST
 		$t = Tiles::getList($args['lat1'], $args['long1'], $args['lat2'], $args['long2']);
 		$files = array_merge($files, $t);
 		//This JSONP file contains all the path and marker data and needs to be cached.
-		$files[] = "index.php?page=tiles&".$longlats."&jsonp=loadMapData";		
+		$files[] = "index.php?page=route&".$longlats."&jsonp=loadMapData";		
 	}
 	
 	//Output the contents of $files[], add domain prefix where appropriate.
