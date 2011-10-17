@@ -41,7 +41,7 @@ CACHE MANIFEST
 	
 	foreach ($files as $file) {
 		if(substr($file, 0, 4) != 'http')
-			echo "http://http://ec2-50-16-75-143.compute-1.amazonaws.com/".$file."\n";
+			echo "http://ec2-50-16-75-143.compute-1.amazonaws.com/".$file."\n";
 		else
 			echo $file."\n";
 	}
