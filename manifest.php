@@ -8,12 +8,10 @@ CACHE MANIFEST
 <?php
 
 	$files = array();
-	
-	$files[] = "index.php";
 	$files[] = "static/css/styles.css";
 	//$files[] = "static/js";
 	$files[] = "static/js/global.js";
-	//$files[] = "static/js/OpenLayers-2.11/OpenLayers.js";
+	$files[] = "static/js/OpenLayers-2.11/OpenLayers.js";
 	$files[] = "static/js/OSecs.js";
 	$files[] = "static/js/map.js";
 	//$files[] = "static/js/OpenLayers-2.11/theme/default/style.css";
@@ -75,14 +73,18 @@ CACHE MANIFEST
 		'lat2' => FILTER_VALIDATE_FLOAT,
 		'long2' => FILTER_VALIDATE_FLOAT
 	));
-	//$longlats = "lat1={$args['lat1']}&long1={$args['long1']}&lat2={$args['lat2']}&long2={$args['long2']}";
-	//$files[] = "index.php?page=tiles&".$longlats."&jsonp=loadMapData";
+
 	
+	//Here we cache the list of map images.
 	if (!in_array(NULL, $args, true)) {
+		$longlats = "lat1={$args['lat1']}&long1={$args['long1']}&lat2={$args['lat2']}&long2={$args['long2']}";
 		$t = Tiles::getList($args['lat1'], $args['long1'], $args['lat2'], $args['long2']);
 		$files = array_merge($files, $t);
+		//This JSONP file contains all the path and marker data and needs to be cached.
+		$files[] = "index.php?page=tiles&".$longlats."&jsonp=loadMapData";		
 	}
 	
+	//Output the contents of $files[], add domain prefix where appropriate.
 	foreach ($files as $file) {
 		if(substr($file, 0, 4) != 'http')
 			echo "http://ec2-50-16-75-143.compute-1.amazonaws.com/".$file."\n";
