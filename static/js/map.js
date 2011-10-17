@@ -8,7 +8,6 @@ RouteMap = (function() {
 	var positionUri;
 	var label = new Array();
 	var icons = new Array();
-	var onInit = function() {};
 	var obj;
 
 	// increase reload attempts 
@@ -141,6 +140,7 @@ RouteMap = (function() {
 			markers.addMarker(new OpenLayers.Marker(p1, icon));
 		},
 		init: init,
+		onInit: function() {},
 		addLine: function(long1, lat1, long2, lat2) {
 			var points = new Array(
 				new OpenLayers.Geometry.Point(long1, lat1),
