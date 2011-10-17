@@ -81,6 +81,7 @@ abstract class Controller {
 		
 	public function render() {
 		if ($this->head) return;
+		$accept = 'html';
 		if (isset($_REQUEST['accept'])) 
 			$accept = strtolower($_REQUEST['accept']);
 		else if(isset($_SERVER['HTTP_ACCEPT']))
@@ -109,9 +110,10 @@ abstract class Controller {
 	}
 	
 	public function error($text, $code) {
+		$accept = 'html';
 		if (isset($_REQUEST['accept'])) 
 			$accept = strtolower($_REQUEST['accept']);
-		else
+		else if(isset($_SERVER['HTTP_ACCEPT']))
 			$accept = strtolower($_SERVER['HTTP_ACCEPT']);
 			
 		$this->data = array("error" => $text);
