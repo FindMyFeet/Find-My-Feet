@@ -36,16 +36,16 @@ How does the 'framework' work?
 ### What actually happens ###
 
 1. **index.php** intercepts *all* page requests.
-2. $page = $_GET['page']
+2. `$page = $_GET['page']`
 3. Looks for a class called *$pageController* in a file called *controller/$page.php* (this is done in the Controller::load() static function)
 4. Creates and instance of the class.
 5. See below
 
 ### The Controller ###
 
-1. require_once() any data/model components you need from the *model/* directory. 
-2. Runs method *init()*. **This is the main method you should override**.
-3. Runs method *post()* or *get()* depending on the type of request. Override *post()* if you want pages to accept post requests.
+1. `require_once(...)` any data/model components you need from the *model/* directory. 
+2. Runs method `init()`. **This is the main method you should override**.
+3. Runs method `post()` or `get()` depending on the type of request. Override `post()` if you want pages to accept post requests.
 
 Use these methods in the controller to pass data from the model to the view. Here is an example:
 
@@ -69,7 +69,7 @@ class GeoController {
 }
 ```
 
-After the init() functions are run, the specified template file is loaded and rendered.
+After the *init()* functions are run, the specified template file is loaded and rendered.
 
 #### note ####
 I may have invested a small ammount of time in this readme but that doesn't mean I've decided (yet) if I want to invest the rest of my week.
