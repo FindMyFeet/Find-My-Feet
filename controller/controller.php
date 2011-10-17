@@ -83,7 +83,7 @@ abstract class Controller {
 		if ($this->head) return;
 		if (isset($_REQUEST['accept'])) 
 			$accept = strtolower($_REQUEST['accept']);
-		else
+		else if(isset($_SERVER['HTTP_ACCEPT']))
 			$accept = strtolower($_SERVER['HTTP_ACCEPT']);
 		//Json
 		if (strpos($accept, "json") !== false) {
