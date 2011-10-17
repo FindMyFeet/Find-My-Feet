@@ -9,7 +9,7 @@ function isValidPostcode(p) {
 }
 
 function showError(html) {
-	$('.error').html(html).show();
+	$('.error').html(html).slideDown();
 }
 
 /* This runs on page load */
@@ -31,11 +31,14 @@ $(function() {
 	//Validate postcodes on form submit
 	$('.validate-postcodes').submit(function() {
 		var failed = false;
+		console.log($('.postcode', this));
 		$('.postcode', this).each(function() {
 			failed = validatePostcodeInput(this);
 		});
-		if (failed)
+		console.log(failed);
+		if (failed) {
 			return false;
+		}
 		else
 			return true;
 	});
