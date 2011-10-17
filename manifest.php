@@ -83,7 +83,7 @@ http://data.southampton.ac.uk/map-icons/Transportation/blank.png
 	
 	//Here we cache the list of map images.
 	if (!in_array(NULL, $args, true)) {
-		$longlats = "lat1={$args['lat1']}&long1={$args['long1']}&lat2={$args['lat2']}&long2={$args['long2']}";
+		$longlats = "lat1={$_GET['lat1']}&long1={$_GET['long1']}&lat2={$_GET['lat2']}&long2={$_GET['long2']}";
 		$t = Tiles::getList($args['lat1'], $args['long1'], $args['lat2'], $args['long2']);
 		$files = array_merge($files, $t);
 		//This JSONP file contains all the path and marker data and needs to be cached.
