@@ -8,7 +8,8 @@ function nearAll($lat1, $long1, $lat2, $long2)
 }
 function nearBusStop($lat1, $long1, $lat2, $long2)
 {
-	return nearTransport($lat1, $long1, $lat2, $long2, './model/data/Stops.csv', 'Bus');
+	return array();
+	//return nearTransport($lat1, $long1, $lat2, $long2, './model/data/Stops.csv', 'Bus');
 }
 
 function nearTrainStation($lat1, $long1, $lat2, $long2)

@@ -11,7 +11,7 @@ CACHE MANIFEST
 	
 	$files[] = "index.php";
 	$files[] = "static/css/styles.css";
-	$files[] = "static/js";
+	//$files[] = "static/js";
 	$files[] = "static/js/global.js";
 	//$files[] = "static/js/OpenLayers-2.11/OpenLayers.js";
 	$files[] = "static/js/OSecs.js";
@@ -31,8 +31,8 @@ CACHE MANIFEST
 		'lat2' => FILTER_VALIDATE_FLOAT,
 		'long2' => FILTER_VALIDATE_FLOAT
 	));
-	$longlats = "lat1={$args['lat1']}&long1={$args['long1']}&lat2={$args['lat2']}&long2={$args['long2']}";
-	$files[] = "index.php?page=tiles&".$longlats."&jsonp=loadMapData";
+	//$longlats = "lat1={$args['lat1']}&long1={$args['long1']}&lat2={$args['lat2']}&long2={$args['long2']}";
+	//$files[] = "index.php?page=tiles&".$longlats."&jsonp=loadMapData";
 	
 	if (!in_array(NULL, $args, true)) {
 		$t = Tiles::getList($args['lat1'], $args['long1'], $args['lat2'], $args['long2']);

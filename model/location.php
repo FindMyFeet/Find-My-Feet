@@ -11,10 +11,10 @@ class Tiles {
 	public static function getList($lat1, $long1, $lat2, $long2)
 	{
 		$arr = array();
-		$top = max($lat1, $lat2) + 0.1;
-		$bottom = min($lat1, $lat2) - 0.1;
-		$left = min($long1, $long2) - 0.1;
-		$right = max($long1, $long2) + 0.1;
+		$top = max($lat1, $lat2);
+		$bottom = min($lat1, $lat2);
+		$left = min($long1, $long2);
+		$right = max($long1, $long2);
 		
 		$prefix="http://opendatamap.ecs.soton.ac.uk/dev/colin/appathon/tile";
 		for($z = 6; $z <= 17; $z++)
