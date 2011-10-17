@@ -1,4 +1,3 @@
-
 root, header, nav {
     display: block;
 }
@@ -61,8 +60,13 @@ h1 {
 }
 
 .error {
-	background-color: red;
+	background-color: #FAA;
+	border: 2px red dashed;
+	
+}
+div.error {
 	padding: 1em;
+	font-size: larger;
 }
 
 .main {
