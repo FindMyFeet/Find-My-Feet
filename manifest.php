@@ -17,6 +17,7 @@ CACHE MANIFEST
 	$files[] = "static/js/OSecs.js";
 	$files[] = "static/js/map.js";
 	//$files[] = "static/js/OpenLayers-2.11/theme/default/style.css";
+	$files[] = "static/js/OpenLayers-2.11/img/blank.gif";
 	$files[] = "static/js/OpenLayers-2.11/img/north-mini.png";
 	$files[] = "static/js/OpenLayers-2.11/img/west-mini.png";
 	$files[] = "static/js/OpenLayers-2.11/img/east-mini.png";
