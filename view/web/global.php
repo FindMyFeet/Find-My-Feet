@@ -21,7 +21,7 @@
         
         
 		<!--[if lt IE 9]>
-		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<base href="http://ec2-50-16-75-143.compute-1.amazonaws.com/" />
 		<script src="static/js/global.js" ></script>
