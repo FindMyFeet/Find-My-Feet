@@ -40,7 +40,7 @@
             <div style="clear: both;"></div>
         </header>
         <div class="main" id="maind">
-		<div class="error" <?= (isset($this->error) ? "" : 'style="display: none"') ?> >
+		<div class="error" <?= (isset($this->error) && ($this->error) ? "" : 'style="display: none"') ?> >
 			 <?= (isset($this->error) ? $this->error : "") ?>
 		</div>
             <?php include $this->body ?>
