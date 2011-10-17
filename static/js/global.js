@@ -18,12 +18,12 @@ $(function() {
 	//Validate a postcode input, return true/false and show an error.
 	var validatePostcodeInput = function(input) {
 		if (!isValidPostcode(input.value)) {
-			$(input).addClass('invalid');
+			$(input).addClass('error');
 			showError('Postcode is invalid');
 			return false;
 		}
 		else {
-			$(input).removeClass('invalid');
+			$(input).removeClass('error');
 			return true;
 		}
 	}
