@@ -21,6 +21,10 @@ class RoutesController extends Controller {
 		$this->long1 = $this->data['from']['long'];
 		$this->long2 = $this->data['to']['long'];		
 
+		if (!$this->lat1 || !$this->lat2) {
+			$this->error("Invalid postcodes", 400);
+		}
+
 		$this->longlats = "lat1={$this->lat1}&long1={$this->long1}&lat2={$this->lat2}&long2={$this->long2}";
 		$this->manifest = "manifest.php?".$this->longlats;
 
