@@ -4,7 +4,13 @@
 	header("content-type: text/cache-manifest");
 ?>
 CACHE MANIFEST
-
+# Map markers
+http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png
+http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png
+http://data.southampton.ac.uk/map-icons/Transportation/train.png
+http://data.southampton.ac.uk/map-icons/Transportation/bus.png
+http://data.southampton.ac.uk/map-icons/Transportation/airport.png
+http://data.southampton.ac.uk/map-icons/Transportation/blank.png
 <?php
 
 	$files = array();
@@ -94,3 +100,5 @@ CACHE MANIFEST
 	
 ?>
 
+NETWORK:
+*
