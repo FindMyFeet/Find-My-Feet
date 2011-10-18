@@ -58,7 +58,7 @@ $(function() {
 			$('.cache-box').css('display', 'block');
 		}, false);
 		applicationCache.addEventListener('progress', function(e) {
-			$('cache-progress').css("width", (e.loaded / e.total) + "%");
+			$('#cache-progress').css("width", (e.loaded / e.total) + "%");
 		}, false);
 	}
 });

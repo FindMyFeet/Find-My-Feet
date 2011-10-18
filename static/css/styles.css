@@ -109,7 +109,7 @@ div.cache-box {
 	width: 100%;
 }
 
-div.cache-progress {
+div.progress-bar {
 	background-image: url(/static/img/stripes.png);
 	background-repeat: repeat-x;
 	height: 40px;
