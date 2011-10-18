@@ -54,9 +54,9 @@ $(function() {
 		var animate = true;
 
 		var animfunc = function() {
-			$('#cache-progress').css('background-position-x', "+=1");
+			$('#cache-progress').css('background-position-x', "+=0.7");
 			if (animate) {
-				setTimeout(animfunc, 5);
+				setTimeout(animfunc, 15);
 			}
 		}
 		
@@ -82,7 +82,10 @@ $(function() {
 
 		//Cache download failed.
 		window.applicationCache.addEventListener('error', function(e) {
-			console.log(e);
+			$('#cache-progress').html('An error occured when trying to cache this map.');
+			setTimeout(function() {
+				$('.cache-box').slideUp('slow');
+			});
 			animate = false;
 		});
 	}

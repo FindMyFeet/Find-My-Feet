@@ -42,7 +42,7 @@
         </header>
         <div class="cache-box" style="display: none">
         	<div id="cache-progress" class="progress-bar">
-        		
+        		Caching...
         	</div>
         </div>
         <div class="main" id="maind">
