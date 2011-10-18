@@ -10,7 +10,7 @@
 	
 ?>
 <!DOCTYPE html>
-<html <?= ((isset($this->manifest) && ($this->manifest)) ? "manifest=\"{$this->manifest}\"" : ""); ?>>
+<html <?= ((isset($this->manifest) && ($this->manifest)) ? "manifest=\"{$this->manifest}\"" : "manifest = \"manifest.php\""); ?>>
     <head>
         <title><?php echo $this->title; ?> - Find My Feet</title>
         
