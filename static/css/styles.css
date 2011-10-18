@@ -117,12 +117,16 @@ div.progress-bar {
 	color: white;
 	font-size: 22px;
 	line-height: 30px;
-	text-shadow: black 2px 2px 0px;
+	text-shadow: #363 2px 2px 0px;
 	border-bottom: medium white solid;
 	border-bottom: medium rgba(255, 255, 255, 0.4) solid;
 }
 div.progress-bar > span {
 	padding-left: 5em;
+}
+
+div.progress-bar a {
+	color: #CCF;
 }
 
 .olControlAttribution { bottom: 0px!important }

@@ -76,7 +76,7 @@ $(function() {
 			$('#cache-progress > span').html('Successfully downloaded to cache! <a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>');
 			setTimeout(function() {
 				$('.cache-box').slideUp('slow');
-			}, 5000);
+			}, 10000);
 			animate = false;
 		}, false);
 
