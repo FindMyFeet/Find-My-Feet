@@ -41,9 +41,7 @@
             <div style="clear: both;"></div>
         </header>
         <div class="cache-box" style="display: none">
-        	<div id="cache-progress" class="progress-bar">
-        		Caching...
-        	</div>
+        	<div id="cache-progress" class="progress-bar"><span>Caching...</span></div>
         </div>
         <div class="main" id="maind">
 		<div class="error" <?= (isset($this->error) && ($this->error) ? "" : 'style="display: none"') ?> >

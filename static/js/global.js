@@ -73,7 +73,7 @@ $(function() {
 
 		//Cache succesfully downloaded
 		window.applicationCache.addEventListener('cached', function(e) {
-			$('#cache-progress').html('Successfully downloaded to cache! <a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>');
+			$('#cache-progress > span').html('Successfully downloaded to cache! <a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>');
 			setTimeout(function() {
 				$('.cache-box').slideUp('slow');
 			}, 5000);
@@ -82,7 +82,7 @@ $(function() {
 
 		//Cache download failed.
 		window.applicationCache.addEventListener('error', function(e) {
-			$('#cache-progress').html('An error occured when trying to cache this map.');
+			$('#cache-progress > span').html('An error occured when trying to cache this map.');
 			setTimeout(function() {
 				$('.cache-box').slideUp('slow');
 			}, 10000);
