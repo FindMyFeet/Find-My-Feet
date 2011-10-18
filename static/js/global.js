@@ -47,4 +47,18 @@ $(function() {
 	$('.postcode').change(function() {
 		validatePostcodeInput(this);
 	});
+	
+	// Cache progress bar
+	if (window.applicationCache) {
+		applicationCache.addEventListener('checking', function() {
+			console.log("checking!");
+		}, false);
+		applicationCache.addEventListener('downloading', function() {
+			console.log("downloading!");
+			$('.cache-box').css('display', 'block');
+		}, false);
+		applicationCache.addEventListener('progress', function(e) {
+			console.log(e);
+		}, false);
+	}
 });

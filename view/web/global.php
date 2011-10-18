@@ -40,6 +40,11 @@
             </nav>
             <div style="clear: both;"></div>
         </header>
+        <div class = "cache-box" style="display: none">
+        	<div class = "cache-progress">
+        		
+        	</div>
+        </div>
         <div class="main" id="maind">
 		<div class="error" <?= (isset($this->error) && ($this->error) ? "" : 'style="display: none"') ?> >
 			 <?= (isset($this->error) ? $this->error : "") ?>

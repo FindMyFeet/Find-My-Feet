@@ -105,6 +105,14 @@ div.text-page {
 	
 }
 
+div.cache-progress {
+	background-image: url(/static/img/stripes.png);
+	background-repeat: repeat-x;
+	height: 40px;
+	width: 0;
+	
+}
+
 .olControlAttribution { bottom: 0px!important }
 
 /* avoid pink tiles */
