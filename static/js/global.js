@@ -85,7 +85,7 @@ $(function() {
 			$('#cache-progress').html('An error occured when trying to cache this map.');
 			setTimeout(function() {
 				$('.cache-box').slideUp('slow');
-			});
+			}, 10000);
 			animate = false;
 		});
 	}
