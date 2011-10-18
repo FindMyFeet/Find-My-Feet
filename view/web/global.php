@@ -41,7 +41,7 @@
             <div style="clear: both;"></div>
         </header>
         <div class="cache-box" style="display: none">
-        	<div id="#cache-progress" class="progress-bar">
+        	<div id="cache-progress" class="progress-bar">
         		
         	</div>
         </div>
