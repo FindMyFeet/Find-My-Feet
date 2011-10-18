@@ -105,6 +105,10 @@ div.text-page {
 	
 }
 
+div.cache-box {
+	width: 100%;
+}
+
 div.cache-progress {
 	background-image: url(/static/img/stripes.png);
 	background-repeat: repeat-x;
