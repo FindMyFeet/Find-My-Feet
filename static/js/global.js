@@ -58,8 +58,8 @@ $(function() {
 			$('.cache-box').css('display', 'block');
 		}, false);
 		window.applicationCache.addEventListener('progress', function(e) {
-			console.log(e);
-			$('#cache-progress').css("width", (e.loaded / e.total) + "%");
+			console.log(e.loaded / e.total);
+			$('#cache-progress').css("width", ((e.loaded * 100.0) / e.total) + "%");
 		}, false);
 	}
 });
