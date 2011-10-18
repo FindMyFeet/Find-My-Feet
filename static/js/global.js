@@ -59,7 +59,7 @@ $(function() {
 		}, false);
 		window.applicationCache.addEventListener('progress', function(e) {
 			console.log(e.loaded / e.total);
-			$('#cache-progress').css("width", ((e.loaded * 100.0) / e.total) + "%");
+			document.getElementById('cache-progress').style.width = ((e.loaded * 100.0) / e.total) + "%";
 		}, false);
 	}
 });
