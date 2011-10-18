@@ -51,10 +51,10 @@ $(function() {
 	// Cache progress bar
 	if (window.applicationCache) {
 		applicationCache.addEventListener('checking', function() {
-			//console.log("checking!");
+			console.log("checking!");
 		}, false);
 		applicationCache.addEventListener('downloading', function() {
-			//console.log("downloading!");
+			console.log("downloading!");
 			$('.cache-box').css('display', 'block');
 		}, false);
 		applicationCache.addEventListener('progress', function(e) {
