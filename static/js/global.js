@@ -54,9 +54,9 @@ $(function() {
 		var animate = true;
 
 		var animfunc = function() {
-			$('#cache-progress').css('background-position-x', "+=0.7");
+			$('#cache-progress').css('background-position-x', "+=1");
 			if (animate) {
-				setTimeout(animfunc, 15);
+				setTimeout(animfunc, 20);
 			}
 		}
 		
