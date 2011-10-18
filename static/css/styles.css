@@ -107,15 +107,20 @@ div.text-page {
 
 div.cache-box {
 	width: 100%;
-	min-height: 40px;
 }
 
 div.progress-bar {
 	background-image: url(/static/img/stripes.png);
 	background-repeat: repeat-x;
-	height: 40px;
+	height: 30px;
 	width: 0;
-	
+	color: white;
+	font-size: 22px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: black 2px 2px 0px;
+	border-bottom: medium white solid;
+	border-bottom: medium rgba(255, 255, 255, 0.4) solid;
 }
 
 .olControlAttribution { bottom: 0px!important }

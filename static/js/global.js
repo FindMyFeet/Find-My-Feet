@@ -50,16 +50,40 @@ $(function() {
 	
 	// Cache progress bar
 	if (window.applicationCache) {
-		window.applicationCache.addEventListener('checking', function() {
-			console.log("checking!");
-		}, false);
+		
+		var animate = true;
+
+		var animfunc = function() {
+			$('#cache-progress').css('background-position-x', "+=1");
+			if (animate) {
+				setTimeout(animfunc, 5);
+			}
+		}
+		
+		//Start cache download
 		window.applicationCache.addEventListener('downloading', function() {
-			console.log("downloading!");
 			$('.cache-box').css('display', 'block');
+			animfunc();
 		}, false);
+
+		//Cache download progress
 		window.applicationCache.addEventListener('progress', function(e) {
-			console.log(e.loaded / e.total);
 			document.getElementById('cache-progress').style.width = ((e.loaded * 100.0) / e.total) + "%";
 		}, false);
+
+		//Cache succesfully downloaded
+		window.applicationCache.addEventListener('cached', function(e) {
+			$('#cache-progress').html('Successfully downloaded to cache! <a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>');
+			setTimeout(function() {
+				$('.cache-box').slideUp('slow');
+			}, 5000);
+			animate = false;
+		}, false);
+
+		//Cache download failed.
+		window.applicationCache.addEventListener('error', function(e) {
+			console.log(e);
+			animate = false;
+		});
 	}
 });
