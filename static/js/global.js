@@ -50,14 +50,15 @@ $(function() {
 	
 	// Cache progress bar
 	if (window.applicationCache) {
-		applicationCache.addEventListener('checking', function() {
+		window.applicationCache.addEventListener('checking', function() {
 			console.log("checking!");
 		}, false);
-		applicationCache.addEventListener('downloading', function() {
+		window.applicationCache.addEventListener('downloading', function() {
 			console.log("downloading!");
 			$('.cache-box').css('display', 'block');
 		}, false);
-		applicationCache.addEventListener('progress', function(e) {
+		window.applicationCache.addEventListener('progress', function(e) {
+			console.log(e);
 			$('#cache-progress').css("width", (e.loaded / e.total) + "%");
 		}, false);
 	}
