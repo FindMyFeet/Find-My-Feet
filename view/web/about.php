@@ -6,7 +6,7 @@
 	<h2>Who are we?</h2>
 	<ul>
 		<li><strong>Colin</strong>: Programmer (maps)</li>
-		<li><strong>Tas</strong>: Programmer(Colin's sidecick)</li>
+		<li><strong>Tas</strong>: Programmer(Colin's sidekick)</li>
 		<li><strong>Joe</strong>: Programmer (glue) </li>
 		<li><strong>Likos</strong>: Person with business contacts, Programmer</li>
 		<li><strong>Rikki</strong>: Programmer, Presenter, Sysadmin?</li>
