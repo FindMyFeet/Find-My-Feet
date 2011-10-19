@@ -2,6 +2,8 @@
 	require_once("model/location.php");
 	require_once("model/geo-lookup.php");
 	header("content-type: text/cache-manifest");
+	header('Cache-Control: no-cache, must-revalidate');
+	header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
 ?>
 CACHE MANIFEST
 http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
