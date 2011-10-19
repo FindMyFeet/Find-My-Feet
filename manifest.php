@@ -26,7 +26,7 @@ http://data.southampton.ac.uk/map-icons/Transportation/blank.png
 	));
 
 	//Here we cache the list of map images.
-	if (!in_array(NULL, $args, true)) {
+	if (($args) && !in_array(NULL, $args, true)) {
 		$files[] = "static/js/OpenLayers-2.11/OpenLayers.js";
 		$files[] = "static/js/OSecs.js";
 		$files[] = "static/js/map.js";
