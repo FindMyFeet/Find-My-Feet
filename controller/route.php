@@ -15,13 +15,15 @@ class routeController extends Controller {
 		}
 		
 		else {
-		
+			/*
 			$args = filter_input_array(INPUT_GET, array(
 				'lat1' => FILTER_VALIDATE_FLOAT,
 				'long1' => FILTER_VALIDATE_FLOAT,
 				'lat2' => FILTER_VALIDATE_FLOAT,
 				'long2' => FILTER_VALIDATE_FLOAT
 			));
+			*/
+			$args = $_GET;
 			if (in_array(NULL, $args, true)) {
 				$this->error("Missing parameters lat1/lat2/long1/long2", 400);
 			}

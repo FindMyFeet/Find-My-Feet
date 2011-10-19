@@ -72,13 +72,15 @@ http://data.southampton.ac.uk/map-icons/Transportation/blank.png
 	$files[] = "static/js/OpenLayers-2.11/theme/default/style.css";
 	$files[] = "static/js/OpenLayers-2.11/theme/default/style.tidy.css";
 
-
+	/*
 	$args = filter_input_array(INPUT_GET, array(
 		'lat1' => FILTER_VALIDATE_FLOAT,
 		'long1' => FILTER_VALIDATE_FLOAT,
 		'lat2' => FILTER_VALIDATE_FLOAT,
 		'long2' => FILTER_VALIDATE_FLOAT
 	));
+	*/
+	$args = $_GET;
 
 	
 	//Here we cache the list of map images.
@@ -93,7 +95,7 @@ http://data.southampton.ac.uk/map-icons/Transportation/blank.png
 	//Output the contents of $files[], add domain prefix where appropriate.
 	foreach ($files as $file) {
 		if(substr($file, 0, 4) != 'http')
-			echo "http://ec2-50-16-75-143.compute-1.amazonaws.com/".$file."\n";
+			echo "http://findmyfeet.ecs.soton.ac.uk/".$file."\n";
 		else
 			echo $file."\n";
 	}

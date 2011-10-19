@@ -5,8 +5,8 @@
 		}
 	}
 	
-	header('Cache-Control: no-cache, must-revalidate');
-	header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+	//header('Cache-Control: no-cache, must-revalidate');
+	//header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
 	
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<base href="http://ec2-50-16-75-143.compute-1.amazonaws.com/" />
+		<base href="http://findmyfeet.ecs.soton.ac.uk/" />
 		<script src="static/js/global.js" ></script>
 		<?php foreach ($this->jscripts as $h): ?>
 			<script src="<?= $h ?>" type="text/javascript"></script>
