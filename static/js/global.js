@@ -73,11 +73,7 @@ $(function() {
 
 		//Cache succesfully downloaded
 		window.applicationCache.addEventListener('cached', function(e) {
-			var bookmarkthis = "Press Ctrl-D to bookmark this page.";
-			if (window.external && window.external.AddFavorite) {
-				bookmarkthis = '<a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>';
-			}
-			$('#cache-progress > span').html('Successfully downloaded to cache! '+bookmarkthis);
+			$('#cache-progress > span').html('Successfully downloaded to cache! Bookmark this page to return while offline.');
 			document.getElementById('cache-progress').style.width = "100%";
 			setTimeout(function() {
 				$('.cache-box').slideUp('slow');
