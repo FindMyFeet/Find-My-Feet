@@ -68,12 +68,17 @@ $(function() {
 
 		//Cache download progress
 		window.applicationCache.addEventListener('progress', function(e) {
-			document.getElementById('cache-progress').style.width = ((e.loaded * 100.0) / e.total) + "%";
+			document.getElementById('cache-progress').style.width = Math.round((e.loaded * 100.0) / e.total) + "%";
 		}, false);
 
 		//Cache succesfully downloaded
 		window.applicationCache.addEventListener('cached', function(e) {
-			$('#cache-progress > span').html('Successfully downloaded to cache! <a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>');
+			var bookmarkthis = "Press Ctrl-D to bookmark this page.";
+			if (window.external && window.external.AddFavorite) {
+				bookmarkthis = '<a href="javascript:window.external.AddFavorite(location.href, document.title);" title="Add to favourites">Bookmark this page.</a>';
+			}
+			$('#cache-progress > span').html('Successfully downloaded to cache! '+bookmarkthis);
+			document.getElementById('cache-progress').style.width = "100%";
 			setTimeout(function() {
 				$('.cache-box').slideUp('slow');
 			}, 10000);
