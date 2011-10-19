@@ -10,7 +10,7 @@
 	
 ?>
 <!DOCTYPE html>
-<html <?= ((isset($this->manifest) && ($this->manifest)) ? "manifest=\"{$this->manifest}\"" : ""); ?>>
+<html <?= ((isset($this->manifest) && ($this->manifest)) ? "manifest=\"{$this->manifest}\"" : "manifest = \"manifest.php\""); ?>>
     <head>
         <title><?php echo $this->title; ?> - Find My Feet</title>
         
@@ -41,9 +41,7 @@
             <div style="clear: both;"></div>
         </header>
         <div class="cache-box" style="display: none">
-        	<div id="cache-progress" class="progress-bar">
-        		
-        	</div>
+        	<div id="cache-progress" class="progress-bar"><span>Caching...</span></div>
         </div>
         <div class="main" id="maind">
 		<div class="error" <?= (isset($this->error) && ($this->error) ? "" : 'style="display: none"') ?> >

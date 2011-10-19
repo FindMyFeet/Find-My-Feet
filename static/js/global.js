@@ -50,16 +50,44 @@ $(function() {
 	
 	// Cache progress bar
 	if (window.applicationCache) {
-		window.applicationCache.addEventListener('checking', function() {
-			console.log("checking!");
-		}, false);
+		
+		var animate = true;
+
+		var animfunc = function() {
+			$('#cache-progress').css('background-position-x', "+=1");
+			if (animate) {
+				setTimeout(animfunc, 20);
+			}
+		}
+		
+		//Start cache download
 		window.applicationCache.addEventListener('downloading', function() {
-			console.log("downloading!");
 			$('.cache-box').css('display', 'block');
+			animfunc();
 		}, false);
+
+		//Cache download progress
 		window.applicationCache.addEventListener('progress', function(e) {
-			console.log(e.loaded / e.total);
-			document.getElementById('cache-progress').style.width = ((e.loaded * 100.0) / e.total) + "%";
+			document.getElementById('cache-progress').style.width = Math.round((e.loaded * 100.0) / e.total) + "%";
 		}, false);
+
+		//Cache succesfully downloaded
+		window.applicationCache.addEventListener('cached', function(e) {
+			$('#cache-progress > span').html('Successfully downloaded to cache! Bookmark this page to return while offline.');
+			document.getElementById('cache-progress').style.width = "100%";
+			setTimeout(function() {
+				$('.cache-box').slideUp('slow');
+			}, 10000);
+			animate = false;
+		}, false);
+
+		//Cache download failed.
+		window.applicationCache.addEventListener('error', function(e) {
+			$('#cache-progress > span').html('An error occured when trying to cache this map.');
+			setTimeout(function() {
+				$('.cache-box').slideUp('slow');
+			}, 10000);
+			animate = false;
+		});
 	}
 });
