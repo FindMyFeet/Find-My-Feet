@@ -202,8 +202,6 @@ function loadMapData(d) {
 
 	RouteMap.onInit = function() {
 		
-		
-		
 		var mapPoints = [];
 		var map = RouteMap.getMap();
 		var lineLayer = RouteMap.getLineLayer();
@@ -242,10 +240,8 @@ function loadMapData(d) {
 		
 			//Go through every point
 			alert(d.directions.length);
-			var foo = "";
 			for (i = 0; i < d.directions.length; i++) {
 				mapPoints.push(new OpenLayers.Geometry.Point(d.directions[i][1], d.directions[i][0]));
-				foo += d.directions[i][1] + "," +d.directions[i][0] + "; ";
 				
 				/*
 				point = d.directions[i];
@@ -263,15 +259,14 @@ function loadMapData(d) {
 				}
 				*/
 			}
-			alert(foo);
+			console.log(mapPoints);
 		
 			foo = "";
 			//Transform all of the points to the correct projection
 			mapPoints.forEach(function(p) {
 				p.transform(proj, map.getProjectionObject());
-				foo += p.toShortString() + "; ";
 			});
-			alert(foo);
+			console.log(mapPoints);
 		
 			//Turn our list of points in to a line
 			var line = new OpenLayers.Geometry.LineString(mapPoints);
