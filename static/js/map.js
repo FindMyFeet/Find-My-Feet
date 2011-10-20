@@ -72,7 +72,7 @@ RouteMap = (function() {
         				markers.addMarker(marker);
         			}
         			else {
-        				var newPx = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(position.longitude, position.latitude).transform(wgs84, map.getProjectionObject())));
+        				var px = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(position.longitude, position.latitude).transform(wgs84, map.getProjectionObject())));
         				marker.moveTo(px);
         			}
         			
