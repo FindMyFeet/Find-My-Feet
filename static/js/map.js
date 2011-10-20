@@ -237,11 +237,10 @@ function loadMapData(d) {
 		
 			//Push the starting point
 		
-		
 			//Go through every point
-			alert(d.directions.length);
 			for (i = 0; i < d.directions.length; i++) {
-				mapPoints.push(new OpenLayers.Geometry.Point(d.directions[i][1], d.directions[i][0]));
+				//mapPoints.push(new OpenLayers.Geometry.Point(d.directions[i][1], d.directions[i][0]));
+				mapPoints.push(new OpenLayers.Geometry.Point(d.directions[i][0], d.directions[i][1]));
 				
 				/*
 				point = d.directions[i];
@@ -261,7 +260,6 @@ function loadMapData(d) {
 			}
 			console.log(mapPoints);
 		
-			foo = "";
 			//Transform all of the points to the correct projection
 			mapPoints.forEach(function(p) {
 				p.transform(proj, map.getProjectionObject());
