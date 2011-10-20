@@ -9,6 +9,8 @@ RouteMap = (function() {
 	var label = new Array();
 	var icons = new Array();
 	var obj;
+	var icon_size = new OpenLayers.Size(32,37);
+	var icon_offset = new OpenLayers.Pixel(-(icon_size.w/2), -icon_size.h);
 
 	// increase reload attempts 
 	OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
@@ -63,7 +65,7 @@ RouteMap = (function() {
         			// Get new Geolocation position
         			if (!marker) {
         				// I couldn't find that web page with the icons you had so this was the best I could do.
-        				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Education/library.png', size, offset);
+        				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Education/library.png', icon_size, icon_offset);
         				var p = new OpenLayers.LonLat(position.longitude, position.latitude);
         				p.transform(wgs84, map.getProjectionObject());
         				marker = new OpenLayers.marker(p, icon)
@@ -110,9 +112,6 @@ RouteMap = (function() {
 		markers = new OpenLayers.Layer.Markers("Editable Markers");
 
 		map.addLayers([streetview, markers]);
-		
-		var size = new OpenLayers.Size(32,37);
-		var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
 			
 
 		//var size = new OpenLayers.Size(32, 37);
@@ -137,8 +136,8 @@ RouteMap = (function() {
         	
         	startGeolocation();
         	
-		var icon1 = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png', size, offset);
-		var icon2 = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png', size, offset);
+		var icon1 = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png', icon_size, icon_offset);
+		var icon2 = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png', icon_size, icon_offset);
 		var p1 = new OpenLayers.LonLat(long1, lat1);
 		var p2 = new OpenLayers.LonLat(long2, lat2);
 		p1.transform(wgs84, map.getProjectionObject());
@@ -159,9 +158,7 @@ RouteMap = (function() {
 		getProj: function() {return wgs84; },
 		getLineLayer: function() { return lineLayer; },
 		addMarker: function(long1, lat1, img) {
-			var size = new OpenLayers.Size(32, 37);
-			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-			var icon = new OpenLayers.Icon(img, size, offset);
+			var icon = new OpenLayers.Icon(img, icon_size, icon_offset);
 			var p1 = new OpenLayers.LonLat(long1, lat1);
 			p1.transform(wgs84, map.getProjectionObject());
 			markers.addMarker(new OpenLayers.Marker(p1, icon));
