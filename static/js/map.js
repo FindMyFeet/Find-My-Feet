@@ -89,9 +89,6 @@ RouteMap = (function() {
 		var right = Math.max(long1, long2);
 		var bottom = Math.max(lat1, lat2);
 		
-	
-		var i = document.getElementById("maind");
-		i.style.height = "450px";
 		var maxExtent = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508),
 			restrictedExtent = maxExtent.clone(),
 			maxResolution = 156543.0339;
@@ -103,7 +100,8 @@ RouteMap = (function() {
 			numZoomLevels: 18,
 			maxResolution: maxResolution,
 			maxExtent: maxExtent,
-			restrictedExtent: restrictedExtent
+			restrictedExtent: restrictedExtent,
+			controls: []
 		};
 		map = new OpenLayers.Map('map', options);
 
@@ -132,6 +130,14 @@ RouteMap = (function() {
 	
 	        map.addLayer(lineLayer);                    
 	        map.addControl(new OpenLayers.Control.DrawFeature(lineLayer, OpenLayers.Handler.Path));         
+
+		var pzb = new OpenLayers.Control.PanZoom({'position': new OpenLayers.Pixel(100,0) });
+		pzb.position = new OpenLayers.Pixel(5,30);
+		map.addControl(pzb);
+
+		map.addControl(new OpenLayers.Control.Navigation());
+		map.addControl(new OpenLayers.Control.Attribution());
+
 	        obj.onInit();  
         	
         	startGeolocation();
