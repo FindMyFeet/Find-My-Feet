@@ -67,13 +67,13 @@ RouteMap = (function() {
         			if (!marker) {
         				// I couldn't find that web page with the icons you had so this was the best I could do.
         				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Education/library.png', icon_size, icon_offset);
-        				var p = new OpenLayers.LonLat(position.longitude, position.latitude);
+        				var p = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude);
         				p.transform(wgs84, map.getProjectionObject());
 					marker = new OpenLayers.Marker(p, icon)
         				markers.addMarker(marker);
         			}
         			else {
-        				var px = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(position.longitude, position.latitude).transform(wgs84, map.getProjectionObject())));
+        				var px = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform(wgs84, map.getProjectionObject())));
         				marker.moveTo(px);
         			}
         			
