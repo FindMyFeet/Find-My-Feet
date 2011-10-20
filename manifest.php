@@ -13,6 +13,7 @@ http://data.southampton.ac.uk/map-icons/Transportation/train.png
 http://data.southampton.ac.uk/map-icons/Transportation/bus.png
 http://data.southampton.ac.uk/map-icons/Transportation/airport.png
 http://data.southampton.ac.uk/map-icons/Transportation/blank.png
+http://data.southampton.ac.uk/map-icons/Media/downloadicon.png
 <?php
 
 	$files = array();

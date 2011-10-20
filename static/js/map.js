@@ -65,8 +65,7 @@ RouteMap = (function() {
         			console.log(position);
         			// Get new Geolocation position
         			if (!marker) {
-        				// I couldn't find that web page with the icons you had so this was the best I could do.
-        				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Education/library.png', icon_size, icon_offset);
+        				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Media/downloadicon.png', icon_size, icon_offset);
         				var p = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude);
         				p.transform(wgs84, map.getProjectionObject());
 					marker = new OpenLayers.Marker(p, icon)
