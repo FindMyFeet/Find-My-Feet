@@ -55,6 +55,31 @@ RouteMap = (function() {
 
 	});
 
+	function startGeolocation() {
+		if (navigator.geolocation) {
+			var marker;
+			
+        		navigator.geolocation.watchPosition(function(position) {
+        			// Get new Geolocation position
+        			if (!marker) {
+        				// I couldn't find that web page with the icons you had so this was the best I could do.
+        				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Education/library.png', size, offset);
+        				var p = new OpenLayers.LonLat(position.longitude, position.latitude);
+        				p.transform(wgs84, map.getProjectionObject());
+        				marker = new OpenLayers.marker(p, icon)
+        				markers.addMarker(marker);
+        			}
+        			else {
+        				var newPx = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(position.longitude, position.latitude).transform(wgs84, map.getProjectionObject())));
+        				marker.moveTo(px);
+        			}
+        			
+        		}, function(error){
+        			// Error getting Geolocation information
+        			console.log(error);
+        		});
+        	}
+	}
 
 	function init(long1, lat1, long2, lat2) {
 		var left = Math.min(long1, long2);
@@ -104,12 +129,14 @@ RouteMap = (function() {
 		map.addControl(click);
 		click.activate();
 		
-        lineLayer = new OpenLayers.Layer.Vector("Line Layer"); 
-
-        map.addLayer(lineLayer);                    
-        map.addControl(new OpenLayers.Control.DrawFeature(lineLayer, OpenLayers.Handler.Path));         
-        obj.onInit();  
-        
+	        lineLayer = new OpenLayers.Layer.Vector("Line Layer"); 
+	
+	        map.addLayer(lineLayer);                    
+	        map.addControl(new OpenLayers.Control.DrawFeature(lineLayer, OpenLayers.Handler.Path));         
+	        obj.onInit();  
+        	
+        	startGeolocation();
+        	
 		var icon1 = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png', size, offset);
 		var icon2 = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png', size, offset);
 		var p1 = new OpenLayers.LonLat(long1, lat1);
