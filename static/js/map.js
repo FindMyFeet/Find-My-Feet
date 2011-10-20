@@ -68,7 +68,7 @@ RouteMap = (function() {
         				var icon = new OpenLayers.Icon('http://data.southampton.ac.uk/map-icons/Education/library.png', icon_size, icon_offset);
         				var p = new OpenLayers.LonLat(position.longitude, position.latitude);
         				p.transform(wgs84, map.getProjectionObject());
-        				marker = new OpenLayers.marker(p, icon)
+					marker = new OpenLayers.Marker(p, icon)
         				markers.addMarker(marker);
         			}
         			else {
