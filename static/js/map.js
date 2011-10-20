@@ -62,6 +62,7 @@ RouteMap = (function() {
 			var marker;
 			
         		navigator.geolocation.watchPosition(function(position) {
+        			console.log(position);
         			// Get new Geolocation position
         			if (!marker) {
         				// I couldn't find that web page with the icons you had so this was the best I could do.
@@ -282,13 +283,11 @@ function loadMapData(d) {
 				}
 				*/
 			}
-			console.log(mapPoints);
 		
 			//Transform all of the points to the correct projection
 			mapPoints.forEach(function(p) {
 				p.transform(proj, map.getProjectionObject());
 			});
-			console.log(mapPoints);
 		
 			//Turn our list of points in to a line
 			var line = new OpenLayers.Geometry.LineString(mapPoints);
