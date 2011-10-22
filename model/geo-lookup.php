@@ -60,14 +60,24 @@ class GeoLookUp{
 		return $arr;
 	}
     	
+	public static function GetDirections($p1, $p2){
+		return array(
+			'fromcode' => $p1[0],
+			'tocode' => $p2[0],
+			'fromname' => $p1[1],
+			'toname' => $p2[1],
+			'walking' => self::GetSingleRoute($p1[2], $p1[3], $p2[2], $p2[3], "foot"),
+			'driving' => self::GetSingleRoute($p1[2], $p1[3], $p2[2], $p2[3], "motorcar"),
+		);
+	}
 	/*Posible modes:
 	 * 	walking
 	 *	driving
 	 *	cycling
 	 */
-	public static function GetWalkingDirections($lat1, $long1, $lat2, $long2, $mean = "driving" ){
+	public static function GetSingleRoute($lat1, $long1, $lat2, $long2, $method = "motorcar" ){
 		//$finalURL="http://maps.googleapis.com/maps/api/directions/json?origin=".rawurlencode($lat1).",".rawurlencode($long1)."&destination=".rawurlencode($lat1).",".rawurlencode($long2)."&mode=".$mean."&key=ABQIAAAACg0Yi2FlJ60uRHWKH4VdoRTFahs1cYCDhpfJCLGEE_UEiQVsURT5UXAoIW2dv-kDeg0hjLuin66Nog&sensor=false";
-		$finalURL = "http://opendatamap.ecs.soton.ac.uk/dev/colin/appathon/route.php?lat1=".$lat1."&long1=".$long1."&lat2=".$lat2."&long2=".$long2;
+		$finalURL = "http://opendatamap.ecs.soton.ac.uk/dev/colin/appathon/route.php?lat1=".$lat1."&long1=".$long1."&lat2=".$lat2."&long2=".$long2."&method=".$method;
 		$data = file_get_contents($finalURL);
 		$data = json_decode($data);
 		return $data['coordinates'];

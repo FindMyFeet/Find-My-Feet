@@ -1,4 +1,5 @@
-<?php 
+<?php
+	//die(); 
 	require_once("model/location.php");
 	require_once("model/geo-lookup.php");
 	header("content-type: text/cache-manifest");
@@ -89,7 +90,7 @@ http://data.southampton.ac.uk/map-icons/Media/downloadicon.png
 		$files[] = "static/js/OpenLayers-2.11/theme/default/style.tidy.css";
 
 		$longlats = "lat1={$_GET['lat1']}&long1={$_GET['long1']}&lat2={$_GET['lat2']}&long2={$_GET['long2']}";
-		$t = Tiles::getList($args['lat1'], $args['long1'], $args['lat2'], $args['long2']);
+		$t = Tiles::getList(array(array($args['lat1'], $args['long1']), array($args['lat2'], $args['long2'])));
 		$files = array_merge($files, $t);
 		//This JSONP file contains all the path and marker data and needs to be cached.
 		$files[] = "index.php?page=route&".$longlats."&jsonp=loadMapData";		
@@ -97,7 +98,7 @@ http://data.southampton.ac.uk/map-icons/Media/downloadicon.png
 	
 	//Output the contents of $files[], add domain prefix where appropriate.
 	foreach ($files as $file) {
-		if(substr($file, 0, 4) != 'http')
+		if(substr($file, 0, 4) != 'http' && $file[0] != '#')
 			echo "http://www.findmyfeet.co.uk/".$file."\n";
 		else
 			echo $file."\n";

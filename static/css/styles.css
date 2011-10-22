@@ -14,6 +14,7 @@ header {
 	top:0;
 	height: 41px;
 	overflow: hidden;
+	box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.4);
 }
 
 .postcodes-form {
@@ -22,6 +23,16 @@ header {
 
 .front-about {
 	float: left;
+}
+
+.postcodes-form, .front-about {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+label span {
+	width: 4em;
+	display: inline-block;
 }
 
 body {
@@ -114,15 +125,48 @@ html, body {
 
 #directions {
 	position: absolute;
-	right: 10px;
-	top: 35px;
-	width: 200px;
-	height: 200px;
-	background-color: rgba(200, 200, 255, 0.9);
-	border: medium black solid;
+	top: 41px;
+	right: 0;
+	width: 300px;
+	background-color: rgba(100, 200, 140, 0.9);
+	border-left: medium black solid;
+	border-bottom: medium black solid;
+	z-index: 100000000000;	
+}
+
+#directions-list {
+	list-style-type: square;
+}
+
+.route-name {
+	cursor: pointer;
+}
+.route-name:hover {
+	background-color: #FCC;
+	background-color: rgba(255, 30, 30, 0.3);
+}
+
+li.selected {
+	text-decoration: underline;
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+#show-routes {
+	position:absolute;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 40px;
+	border: thin black solid;
 	z-index: 100000000000;
-	
-	
+	padding-right: 20px;
+	background-color: #ACA;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+#show-routes:hover {
+	background-color: #BDB;
 }
 
 div.cache-box {

@@ -148,9 +148,25 @@ RouteMap = (function() {
 		var p2 = new OpenLayers.LonLat(long2, lat2);
 		p1.transform(wgs84, map.getProjectionObject());
 		p2.transform(wgs84, map.getProjectionObject());
-		markers.addMarker(new OpenLayers.Marker(p1, icon1));
-		markers.addMarker(new OpenLayers.Marker(p2, icon2));                 
 		
+		var m1 = new OpenLayers.Marker(p1, icon1);
+		addEventToMarker(m1);
+		markers.addMarker(m1);
+		var m2 = new OpenLayers.Marker(p2, icon2);
+		addEventToMarker(m2);
+		markers.addMarker(m2);
+		
+		
+		
+	}
+	
+	function addEventToMarker(marker)
+	{
+		marker.id = "1";
+		marker.events.register("mousedown", marker, function() {
+			alert(this.id);
+		});
+		//alert("adding marker");
 	}
 
 
@@ -167,10 +183,42 @@ RouteMap = (function() {
 			var icon = new OpenLayers.Icon(img, icon_size, icon_offset);
 			var p1 = new OpenLayers.LonLat(long1, lat1);
 			p1.transform(wgs84, map.getProjectionObject());
-			markers.addMarker(new OpenLayers.Marker(p1, icon));
+			var marker = new OpenLayers.Marker(p1, icon);
+			markers.addMarker(marker);
 		},
 		init: init,
 		onInit: function() {},
+		/* Add a route so that it can be drawn with drawRoute() */
+		addRoute: function(route) {
+			var item = $("<li class='route-name'>"+route.fromname+" to "+route.toname+"</li>");
+			$('#directions-list').append(item);
+			item.click(function() {
+				RouteMap.showRoute(route);
+				item.addClass("selected");
+			});
+		},
+		showRoute: function(route) {
+			lineLayer.removeAllFeatures();
+			$('.route-name').removeClass("selected");
+			//Draw driving line
+			var line = new OpenLayers.Geometry.LineString(route.driving);
+			var style = { strokeColor: '#000000', 
+				strokeOpacity: 0.5,
+				strokeWidth: 5
+			};
+			var lineFeature = new OpenLayers.Feature.Vector(line, null, style);
+			lineLayer.addFeatures([lineFeature]);
+
+			
+			//Draw walking line
+			var line2 = new OpenLayers.Geometry.LineString(route.walking);
+			var style2 = { strokeColor: '#008', 
+				strokeOpacity: 0.5,
+				strokeWidth: 5
+			};
+			var lineFeature2 = new OpenLayers.Feature.Vector(line2, null, style2);
+			lineLayer.addFeatures([lineFeature2]);
+		},
 		addLine: function(long1, lat1, long2, lat2) {
 			var points = new Array(
 				new OpenLayers.Geometry.Point(long1, lat1),
@@ -192,6 +240,14 @@ RouteMap = (function() {
 	}
 	return obj;
 })();
+
+$(function() {
+	//Set up Show Routes toggle button
+	$('#directions').hide();
+	$('#show-routes').click(function() {
+		$('#directions').slideToggle();
+	});
+});
 
 function loadMapData(d) {
 	// This function is from Google's polyline utility.
@@ -232,7 +288,6 @@ function loadMapData(d) {
 
 	RouteMap.onInit = function() {
 		
-		var mapPoints = [];
 		var map = RouteMap.getMap();
 		var lineLayer = RouteMap.getLineLayer();
 		var proj = RouteMap.getProj();
@@ -241,14 +296,14 @@ function loadMapData(d) {
 		if (d.poi) {
 			d.poi.forEach(function(poi) {
 				var url;
-				switch (poi[0]) {
-					case "Train":
+				switch (poi[4]) {
+					case "train":
 						url = "http://data.southampton.ac.uk/map-icons/Transportation/train.png";
 						break;
-					case "Bus":
+					case "bus":
 						url = "http://data.southampton.ac.uk/map-icons/Transportation/bus.png";
 						break;
-					case "Airport":
+					case "airport":
 						url = "http://data.southampton.ac.uk/map-icons/Transportation/airport.png";
 						break;
 					default:
@@ -259,49 +314,26 @@ function loadMapData(d) {
 			});
 		}
 		
-		if (d.directions) {
-			if (d.directions[-1]) {
-				//document.getElementById("directions").innerHTML = "<li>Google map directions error: "+d.directions[-1].status+"</li>";
-				return;
-			}
-		
-			//Push the starting point
-		
-			//Go through every point
-			for (i = 0; i < d.directions.length; i++) {
-				//mapPoints.push(new OpenLayers.Geometry.Point(d.directions[i][1], d.directions[i][0]));
-				mapPoints.push(new OpenLayers.Geometry.Point(d.directions[i][0], d.directions[i][1]));
-				
-				/*
-				point = d.directions[i];
-			
-	//			console.log(point);
-				//If the point has polygon data, draw it
-				if (point.points) {
-					decodeLine(point.points).forEach(function(p) {
-						mapPoints.push(new OpenLayers.Geometry.Point(p[1], p[0]));
+		if(d.routes) {
+			d.routes.forEach(function(route) {
+				var d = function(type) {
+					var mapPoints = [];
+					//Go through every point
+					for (i = 0; i < route[type].length; i++) {
+						mapPoints.push(new OpenLayers.Geometry.Point(route[type][i][0], route[type][i][1]));
+					}
+					
+					//Transform all of the points to the correct projection
+					mapPoints.forEach(function(p) {
+						p.transform(proj, map.getProjectionObject());
 					});
-				}
-				//Otherwise just connect to the last point
-				else {
-					//mapPoints.push(new OpenLayers.Geometry.Point(point.lng, point.lat));
-				}
-				*/
-			}
+					route[type] = mapPoints;				
+				};
+				d('walking');
+				d('driving');
+				RouteMap.addRoute(route);
 		
-			//Transform all of the points to the correct projection
-			mapPoints.forEach(function(p) {
-				p.transform(proj, map.getProjectionObject());
 			});
-		
-			//Turn our list of points in to a line
-			var line = new OpenLayers.Geometry.LineString(mapPoints);
-			var style = { strokeColor: '#000000', 
-				strokeOpacity: 0.5,
-				strokeWidth: 5
-			};
-			var lineFeature = new OpenLayers.Feature.Vector(line, null, style);
-			lineLayer.addFeatures([lineFeature]);
 		}
 	}
 }

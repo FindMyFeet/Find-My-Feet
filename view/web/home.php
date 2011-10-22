@@ -4,12 +4,18 @@
 		<h2 align="center"> Enter destinations </h2>
 		<input type="hidden" name="page" value="routes" />
 		<div>
-			<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png" />
-			<label for="from">Hotel: </label><input class="postcode" id="from" onblur="isValidPostcode(this.value)" type="text" name="from" placeholder="Postcode" required />
+			<label for="from">
+				<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png" />
+				<span>Hotel: </span>
+			</label>
+			<input class="postcode" id="from" onblur="isValidPostcode(this.value)" type="text" name="from" placeholder="Postcode" required />
 		</div>
 		<div>
-			<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png" />
-			<label for="to">Venue: </label><input class="postcode" id="to" onblur="isValidPostcode(this.value)" type="text" name="to" placeholder="Postcode" required />
+			<label for="to">
+				<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png" />
+				<span>Venue: </span>
+			</label>
+			<input class="postcode" id="to" onblur="isValidPostcode(this.value)" type="text" name="to" placeholder="Postcode" required />
 		</div>
 		<input type="submit" value="Search" />
 	</form>
