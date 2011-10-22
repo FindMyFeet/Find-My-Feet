@@ -1,7 +1,7 @@
 <?php
 require_once('../mysql-pdo.inc.php');
 
-$db = getDB();
+
 
 function nearAll($lat1, $long1, $lat2, $long2)
 {
@@ -28,6 +28,7 @@ function nearAirport($lat, $long)
 
 function nearestTransport($type,$latitude,$longitude,$count=1)
 {
+	$db = getDB();
 	$arrResult = array();
 	if($type != "bus" && $type != "trainstation" && $type != "airport")
 		return;
