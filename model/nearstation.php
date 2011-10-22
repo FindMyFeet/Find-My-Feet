@@ -1,5 +1,8 @@
 <?php
-require '../../mysql.inc.php';
+require_once('../../mysql-dbo.inc.php');
+
+$db = getDB();
+
 function nearAll($lat1, $long1, $lat2, $long2)
 {
 	return array_merge(nearPoint($lat1, $long1), nearPoint($lat2, $long2));
@@ -31,10 +34,17 @@ function nearestTransport($type,$latitude,$longitude,$count=1)
 	$latitude = (float)$latitude;
 	$longitude = (float)$longitude;
 	$count = (int)$count;
-
-	$query = "SELECT * FROM ".$type." ORDER BY (((acos(sin((".$latitude."*pi()/180)) * sin((`Latitude`*pi()/180))+cos((".$latitude."*pi()/180)) * cos((`Latitude`*pi()/180)) * cos(((".$longitude."- `Longitude`)*pi()/180))))*180/pi())) ASC LIMIT ".$count;
-	$result = mysql_query($query);
-	while($row = mysql_fetch_array($result,MYSQL_ASSOC))
+	$q = $db->prepare("
+		SELECT * FROM transport WHERE type = :type
+		ORDER BY (((acos(sin((:latitude*pi()/180)) * sin((`Latitude`*pi()/180))+cos((:latitude*pi()/180)) * cos((`Latitude`*pi()/180)) * cos(((:longitude - `Longitude`)*pi()/180))))*180/pi())) ASC 
+		LIMIT :count"
+	);
+	$q->bindValue(":type", $type, PDO::PARAM_STR);
+	$q->bindValue(":latitude", $latitude);
+	$q->bindValue(":longitude", $longitude);
+	$result = $q->execute();
+	
+	while($row = $q->fetch(PDO::FETCH_ASSOC))
 	{
 		$row['type'] = $type;
 		$arrResult[] = $row;
