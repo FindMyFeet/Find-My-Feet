@@ -1,5 +1,5 @@
 <?php
-require_once('../../mysql-dbo.inc.php');
+require_once('../mysql-dbo.inc.php');
 
 $db = getDB();
 
