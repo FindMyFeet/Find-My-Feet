@@ -29,7 +29,6 @@ function nearAirport($lat, $long)
 function nearestTransport($type,$latitude,$longitude,$count=1)
 {
 	$db = getDB();
-	$arrResult = array();
 	if($type != "bus" && $type != "trainstation" && $type != "airport")
 		return;
 	$latitude = (float)$latitude;
@@ -45,12 +44,7 @@ function nearestTransport($type,$latitude,$longitude,$count=1)
 	$q->bindValue(":longitude", $longitude);
 	$result = $q->execute();
 	
-	while($row = $q->fetch(PDO::FETCH_ASSOC))
-	{
-		$row['type'] = $type;
-		$arrResult[] = $row;
-	}
-	return $arrResult;
+	return $result->fetchAll();
 }
 
 ?>
