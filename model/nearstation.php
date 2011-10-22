@@ -36,12 +36,12 @@ function nearestTransport($type,$latitude,$longitude,$count=1)
 	$count = (int)$count;
 	$q = $db->prepare("
 		SELECT * FROM transport WHERE type = :type
-		ORDER BY (((acos(sin((:latitude*pi()/180)) * sin((`Latitude`*pi()/180))+cos((:latitude*pi()/180)) * cos((`Latitude`*pi()/180)) * cos(((:longitude - `Longitude`)*pi()/180))))*180/pi())) ASC 
+		ORDER BY (((acos(sin(($latitude*pi()/180)) * sin((`Latitude`*pi()/180))+cos(($latitude*pi()/180)) * cos((`Latitude`*pi()/180)) * cos((($longitude - `Longitude`)*pi()/180))))*180/pi())) ASC 
 		LIMIT :count"
 		);
 	$q->bindValue(":type", $type, PDO::PARAM_STR);
-	$q->bindValue(":latitude", $latitude);
-	$q->bindValue(":longitude", $longitude);
+	//$q->bindValue(":latitude", $latitude);
+	//$q->bindValue(":longitude", $longitude);
 	$q->bindValue(":count", $count, PDO::PARAM_INT);
 	$q->execute();
 	
