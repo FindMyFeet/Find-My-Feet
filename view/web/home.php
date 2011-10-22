@@ -1,7 +1,6 @@
-
 <div class="centered">
-	<form class="postcodes-form" class="validate-postcodes" method="get" action="index.php">
-		<h2 align="center"> Enter destinations </h2>
+	<form class="postcodes-form validate-postcodes" method="get" action="index.php">
+		<h2> Enter destinations </h2>
 		<input type="hidden" name="page" value="routes" />
 		<div>
 			<label for="from">
