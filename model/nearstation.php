@@ -42,6 +42,7 @@ function nearestTransport($type,$latitude,$longitude,$count=1)
 	$q->bindValue(":type", $type, PDO::PARAM_STR);
 	$q->bindValue(":latitude", $latitude);
 	$q->bindValue(":longitude", $longitude);
+	$q->bindValue(":count", $count, PDO::PARAM_INT);
 	$q->execute();
 	
 	return $q->fetchAll();
