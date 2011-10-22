@@ -28,11 +28,39 @@ class routeController extends Controller {
 				$this->error("Missing parameters lat1/lat2/long1/long2", 400);
 			}
 			//Test the location thingy!
-		
+			$user_points = array(array($args['lat1'], $args['long1']), array($args['lat1'], $args['long1']));
+
+			$poi_list = array();
+			$routes = array();
+					
+			foreach ($user_points as $p) {
+				$busses = nearBusStop($p[0], $p[1]);
+				$trains = nearTrainStation($p[0], $p[1]);
+				$airports = nearAirport($p[0], $p[1]);
+				
+				$routes[] = GeoLookUp::GetDirections($airports[0], $p);
+				$routes[] = GeoLookUp::GetDirections($airports[0], $p);
+				$routes[] = GeoLookUp::GetDirections($p, $trains[0]);
+				$routes[] = GeoLookUp::GetDirections($p, $airports[0]);
+				$points = array_merge($busses, $trains, $airports);
+				
+				foreach ($points as $poi) {
+					if (!array_key_exists($poi[0], $poi_list)) {
+						$poi_list[$poi[0]] = $poi;
+					}
+				}
+				
+				foreach ($user_points as $p2) {
+					if ($p2[0] === $p[0] && $p2[1] === $p[1]) {
+						$routes[] = GeoLookUp::GetDirections($p, $p2);
+					}
+				}
+			}
+					
 			$this->data = array(
-				"images" => Tiles::getList($args['lat1'], $args['long1'], $args['lat2'], $args['long2']),
-				"directions" => GeoLookUp::GetWalkingDirections($args['lat1'], $args['long1'], $args['lat2'], $args['long2'], "driving"),
-				"poi" => nearAll($args['lat1'], $args['long1'] , $args['lat2'], $args['long2'])
+				"images" => Tiles::getList($user_points),
+				"routes" => $routes,
+				"poi" => $poi_list
 			);
 		}
 	}
