@@ -4,14 +4,14 @@
 		<input type="hidden" name="page" value="routes" />
 		<div>
 			<label for="from">
-				<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png" />
+				<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hotel_0star.png" alt="" />
 				<span>Hotel: </span>
 			</label>
 			<input class="postcode" id="from" onblur="isValidPostcode(this.value)" type="text" name="from" placeholder="Postcode" required />
 		</div>
 		<div>
 			<label for="to">
-				<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png" />
+				<img src = "http://data.southampton.ac.uk/map-icons/Restaurants-and-Hotels/hostel_0star.png" alt="" />
 				<span>Venue: </span>
 			</label>
 			<input class="postcode" id="to" onblur="isValidPostcode(this.value)" type="text" name="to" placeholder="Postcode" required />
