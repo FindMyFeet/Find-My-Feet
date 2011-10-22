@@ -15,11 +15,8 @@ header {
 	height: 41px;
 }
 
-form.niceForm{
-	border: 1;
-	text-align: center;
-	padding: 3px;
-	border-spacing: 5px;
+.postcodes-form{
+	float: right;
 }
 
 body {
