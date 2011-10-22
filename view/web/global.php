@@ -36,7 +36,7 @@
             <a href="?page=home"> <h1> Find My Feet </h1> </a>
             <nav>
 				<a <?php selected_if('home', $this->template); ?>href="?page=home">Home</a>
-				<a <?php selected_if('emails', $this->template); ?>href="?page=emails">Emails</a>
+				<!-- <a <?php selected_if('emails', $this->template); ?>href="?page=emails">Emails</a> -->
 				<a <?php selected_if('about', $this->template); ?>href="?page=about">About</a>
             </nav>
             <div style="clear: both;"></div>
