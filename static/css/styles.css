@@ -15,8 +15,8 @@ header {
 	height: 41px;
 }
 
-.postcodes-form{
-	float: right;
+.postcodes-form, .front-about{
+	float: left;
 }
 
 body {
