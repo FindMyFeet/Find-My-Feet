@@ -18,7 +18,7 @@ function nearBusStop($lat, $long)
 
 function nearTrainStation($lat, $long)
 {
-	return nearestTransport("trainstation",$lat,$long,10);
+	return nearestTransport("train",$lat,$long,10);
 }
 
 function nearAirport($lat, $long)
@@ -45,7 +45,7 @@ function nearestTransport($type,$latitude,$longitude,$count=1)
 	$q->bindValue(":count", $count, PDO::PARAM_INT);
 	$q->execute();
 	
-	return $q->fetchAll();
+	return $q->fetchAll(PDO::FETCH_NUM);
 }
 
 ?>
