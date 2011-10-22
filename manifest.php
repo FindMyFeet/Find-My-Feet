@@ -98,7 +98,7 @@ http://data.southampton.ac.uk/map-icons/Media/downloadicon.png
 	//Output the contents of $files[], add domain prefix where appropriate.
 	foreach ($files as $file) {
 		if(substr($file, 0, 4) != 'http')
-			echo "http://findmyfeet.ecs.soton.ac.uk/".$file."\n";
+			echo "http://www.findmyfeet.co.uk/".$file."\n";
 		else
 			echo $file."\n";
 	}

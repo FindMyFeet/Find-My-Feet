@@ -22,13 +22,14 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<base href="http://findmyfeet.ecs.soton.ac.uk/" />
+		<base href="http://www.findmyfeet.co.uk/" />
 		<script src="static/js/global.js" ></script>
 		<?php foreach ($this->jscripts as $h): ?>
 			<script src="<?= $h ?>" type="text/javascript"></script>
 		<?php endforeach ?> 
 		
 		<link rel="stylesheet" type="text/css" href="static/css/styles.css" />
+		<link rel="shortcut icon" href="static/img/favicon.ico" />
     </head>
     <body>
         <header>
